@@ -7,3 +7,7 @@
 ###< symfony/framework-bundle ###
 
 composer.phar
+###> symfony/phpunit-bridge ###
+.phpunit
+/phpunit.xml
+###< symfony/phpunit-bridge ###
