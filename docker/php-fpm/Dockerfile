@@ -9,6 +9,8 @@ RUN apt-get update \
   && pecl install xdebug \
   && docker-php-ext-enable xdebug
 
+RUN docker-php-ext-install pdo_mysql
+
 COPY php-fpm.conf /etc/php-fpm.conf
 COPY php.ini /usr/local/etc/php/php.ini
 

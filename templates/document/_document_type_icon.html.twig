@@ -1,0 +1,6 @@
+{% if (type_id == constant('App\\Entity\\DocumentType::TYPE_TRAVEL')) %}
+    {% set icon = 'truck' %}
+{% elseif (type_id == constant('App\\Entity\\DocumentType::TYPE_REIMBURSEMENT')) %}
+    {% set icon = 'dollar-sign' %}
+{% endif %}
+<span data-feather="{{ icon }}"></span>

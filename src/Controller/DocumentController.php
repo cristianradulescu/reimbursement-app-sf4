@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Document;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -12,8 +13,10 @@ class DocumentController extends Controller
      */
     public function index()
     {
+        $entityManager = $this->getDoctrine()->getManager();
+
         return $this->render('document/index.html.twig', [
-            'controller_name' => 'DocumentController',
+            'documents' => $entityManager->getRepository(Document::class)->findAll(),
         ]);
     }
 }

@@ -1,0 +1,8 @@
+{% if (status_id == constant('App\\Entity\\DocumentStatus::STATUS_NEW')) %}
+    {% set label = 'danger' %}
+{% elseif (status_id == constant('App\\Entity\\DocumentStatus::STATUS_PENDING')) %}
+    {% set label = 'warning' %}
+{% elseif (status_id == constant('App\\Entity\\DocumentStatus::STATUS_COMPLETED')) %}
+    {% set label = 'success' %}
+{% endif %}
+<span class="badge badge-{{ label }}">{{ value|trans() }}</span>
