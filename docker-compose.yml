@@ -1,0 +1,38 @@
+version: '3'
+
+volumes:
+  mysqldata:
+    driver: local
+
+services:
+  nginx:
+    container_name: rbsf4_nginx
+    build: docker/nginx
+    ports:
+      - 8080:80
+    volumes:
+      - ./:/app
+
+  php:
+    container_name: rbsf4_php
+    build: docker/php-fpm
+    volumes:
+      - ./:/app
+    working_dir: /app
+
+  mysqlserver:
+    container_name: rbsf4_sql
+    image: mysql/mysql-server
+    environment:
+      MYSQL_DATABASE: reimbursement
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+      MYSQL_ROOT_PASSWORD: passroot
+    volumes:
+      - mysqldata:/var/lib/mysql
+
+  adminer:
+    container_name: rbsf4_adminer
+    image: adminer
+    ports:
+      - 8081:8080
