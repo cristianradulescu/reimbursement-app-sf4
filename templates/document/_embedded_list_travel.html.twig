@@ -1,0 +1,27 @@
+<table class="table table-sm">
+    <tbody>
+    <tr class="showpage-container-row">
+        <td scope="row" colspan="2">
+            <strong>Travel</strong>
+            <table class="table table-sm table-bordered showpage-table-embedded">
+                <tbody>
+                    <tr class="showpage-container-row">
+                        <th scope="row">Period</th>
+                        <td>{{ travel.dateStart|dateFormat }} - {{ travel.dateEnd|dateFormat }}</td>
+                    </tr>
+                    <tr class="showpage-container-row">
+                        <th scope="row">Departure times</th>
+                        <td>{{ travel.departureLeaveTime|travelDateTimeFormat }} - {{ travel.destinationArrivalTime|travelDateTimeFormat }}</td>
+                    </tr>
+                    <tr class="showpage-container-row">
+                        <th scope="row">Return times</th>
+                        <td>{{ travel.destinationLeaveTime|travelDateTimeFormat }} - {{ travel.departureArrivalTime|travelDateTimeFormat }}</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+        </td>
+    </tr>
+    </tbody>
+</table>

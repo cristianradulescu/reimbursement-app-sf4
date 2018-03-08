@@ -68,7 +68,10 @@ class Travel
     /**
      * @var \TravelDestination
      *
-     * @ORM\ManyToOne(targetEntity="TravelDestination")
+     * @ORM\ManyToOne(
+     *     targetEntity="TravelDestination",
+     *     fetch="EAGER"
+     * )
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="destination_id", referencedColumnName="id")
      * })
@@ -101,7 +104,10 @@ class Travel
     /**
      * @var \TravelPurpose
      *
-     * @ORM\ManyToOne(targetEntity="TravelPurpose")
+     * @ORM\ManyToOne(
+     *     targetEntity="TravelPurpose",
+     *     fetch="EAGER"
+     * )
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="purpose_id", referencedColumnName="id")
      * })

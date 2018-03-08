@@ -1,0 +1,10 @@
+<tr class="showpage-container-row">
+    <th scope="row">{{ key }}</th>
+    <td>
+    {% if template is defined %}
+        {{ include(template.name, template.vars) }}
+    {% else %}
+        {{ value }}
+    {% endif %}
+    </td>
+</tr>

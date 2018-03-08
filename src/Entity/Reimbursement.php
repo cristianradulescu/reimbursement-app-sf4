@@ -58,7 +58,10 @@ class Reimbursement
     /**
      * @var \Employee
      *
-     * @ORM\ManyToOne(targetEntity="Employee")
+     * @ORM\ManyToOne(
+     *     targetEntity="Employee",
+     *     fetch="EAGER"
+     * )
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="employee_id", referencedColumnName="id")
      * })
@@ -68,7 +71,10 @@ class Reimbursement
     /**
      * @var \ReimbursementType
      *
-     * @ORM\ManyToOne(targetEntity="ReimbursementType")
+     * @ORM\ManyToOne(
+     *     targetEntity="ReimbursementType",
+     *     fetch="EAGER"
+     * )
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="type_id", referencedColumnName="id")
      * })

@@ -26,7 +26,10 @@ class Document
     /**
      * @var \Employee
      *
-     * @ORM\ManyToOne(targetEntity="Employee")
+     * @ORM\ManyToOne(
+     *     targetEntity="Employee",
+     *     fetch="EAGER"
+     * )
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="employee_id", referencedColumnName="id")
      * })
@@ -36,7 +39,10 @@ class Document
     /**
      * @var \DocumentStatus
      *
-     * @ORM\ManyToOne(targetEntity="DocumentStatus")
+     * @ORM\ManyToOne(
+     *     targetEntity="DocumentStatus",
+     *     fetch="EAGER"
+     * )
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="status_id", referencedColumnName="id")
      * })
@@ -46,7 +52,10 @@ class Document
     /**
      * @var \DocumentType
      *
-     * @ORM\ManyToOne(targetEntity="DocumentType")
+     * @ORM\ManyToOne(
+     *     targetEntity="DocumentType",
+     *     fetch="EAGER"
+     * )
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="type_id", referencedColumnName="id")
      * })
@@ -59,7 +68,8 @@ class Document
      * @ORM\OneToOne(
      *     targetEntity="Travel",
      *     mappedBy="document",
-     *     cascade={"persist"}
+     *     cascade={"persist"},
+     *     fetch="EAGER"
      * )
      */
     private $travel;
@@ -70,7 +80,8 @@ class Document
      * @ORM\OneToMany(
      *     targetEntity="Reimbursement",
      *     mappedBy="document",
-     *     cascade={"persist"}
+     *     cascade={"persist"},
+     *     fetch="EAGER"
      * )
      */
     private $reimbursements;
@@ -252,14 +263,14 @@ class Document
     /**
      * @return bool
      */
-    public function isTravelDocument()
+    public function isTravel()
     {
         return DocumentType::TYPE_TRAVEL === $this->getType()->getId();
     }
     /**
      * @return bool
      */
-    public function isReimbursementDocument()
+    public function isReimbursement()
     {
         return DocumentType::TYPE_REIMBURSEMENT === $this->getType()->getId();
     }
@@ -278,7 +289,7 @@ class Document
     public function getTotalAmount()
     {
         $total = 0;
-        if ($this->isReimbursementDocument()) {
+        if ($this->isReimbursement()) {
             foreach ($this->getReimbursements() as $reimbursement) {
                 $total += $reimbursement->getValue();
             }
@@ -286,7 +297,7 @@ class Document
             return round($total, 2);
         }
 
-        if ($this->isTravelDocument() && $this->hasTravel()) {
+        if ($this->isTravel() && $this->hasTravel()) {
             return round($this->getTravel()->getNumberOfDaysOnTravel() * Travel::TRAVEL_ALLOWANCE, 2);
         }
 
@@ -299,7 +310,7 @@ class Document
     public function __toString()
     {
         $representation = $this->getType().' - '.$this->getEmployee();
-        if ($this->isTravelDocument() && $this->hasTravel()) {
+        if ($this->isTravel() && $this->hasTravel()) {
             return  $representation.', '.$this->getTravel()->getDateStart()->format('d M Y');
         }
 

@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reimbursements | Show document #{{ document.id }} {% endblock %}
+
+{% block body %}
+<div class="btn-group btn-group-sm" role="group" aria-label="Navigation">
+    <a class="btn btn-secondary" href="{{ path('document_list') }}" title='Back to documents'>
+        <span data-feather="chevron-left"></span>
+    </a>
+    <a class="btn btn-secondary" href="document/edit" title="Edit document">
+        <span data-feather="edit"></span>
+    </a>
+
+    {%  if document.isReimbursement %}
+        <a class="btn btn-secondary" href="#" title="Add new reimbursement on document">
+            <span data-feather="plus"></span><span data-feather="dollar-sign"></span>
+        </a>
+    {% endif %}
+</div>
+<hr />
+
+<table class="table table-sm">
+    <tbody>
+        {{ include('document/_showpage_container_row.html.twig', { key: 'ID', value: document.id }) }}
+        {{ include('document/_showpage_container_row.html.twig', { key: 'Employee', value: document.employee.fullName }) }}
+        {{ include(
+            'document/_showpage_container_row.html.twig',
+            {
+                key: 'Status',
+                template: {
+                    name: 'document/_document_status_icon.html.twig',
+                    vars: { status_id: document.status.id, value: document.status.name }
+                }
+            }
+        )
+        }}
+        {{ include('document/_showpage_container_row.html.twig', { key: 'Type', value: document.type.name }) }}
+        {{ include('document/_showpage_container_row.html.twig', { key: 'Total', value: document.totalAmount }) }}
+        {{ include('document/_showpage_container_row.html.twig', { key: 'Created', value: document.createdAt|timestampFormat }) }}
+        {{ include('document/_showpage_container_row.html.twig', { key: 'Update', value: document.updatedAt|timestampFormat }) }}
+    </tbody>
+</table>
+
+<!-- Reimbursements -->
+{% if document.isReimbursement %}
+    {{  include('document/_embedded_list_reimbursements.html.twig', { reimbursements: document.reimbursements }) }}
+{% endif %}
+<!-- /Reimbursements -->
+
+<!-- Travel -->
+{% if document.isTravel %}
+    {{  include('document/_embedded_list_travel.html.twig', { travel: document.travel }) }}
+{% endif %}
+<!-- /Travel -->
+
+{% endblock %}
