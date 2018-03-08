@@ -58,7 +58,7 @@
             "@auto-scripts",
             "@add-bootstrap"
         ],
-        "add-bootstrap": "mkdir -p public/bootstrap; cp -r $(pwd)/vendor/twbs/bootstrap/dist/ public/bootstrap/dist; cp -r $(pwd)/vendor/twbs/bootstrap/assets/ public/bootstrap/assets;"
+        "add-bootstrap": "if [ ! -d public/bootstrap ]; then mkdir -p public/bootstrap && cp -r $(pwd)/vendor/twbs/bootstrap/dist public/bootstrap/ && cp -r $(pwd)/vendor/twbs/bootstrap/assets public/bootstrap/ && echo '\\n>> Done installing Bootstrap files <<'; else echo '\\n>> Bootstrap files already installed <<'; fi"
     },
     "conflict": {
         "symfony/symfony": "*"
