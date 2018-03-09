@@ -36,7 +36,7 @@ class Company
     private $costCenter;
 
     /**
-     * @var \Employee
+     * @var Employee
      *
      * @ORM\ManyToOne(targetEntity="Employee")
      * @ORM\JoinColumns({
@@ -152,11 +152,11 @@ class Company
     /**
      * Set divisionManager
      *
-     * @param \App\Entity\Employee $divisionManager
+     * @param Employee $divisionManager
      *
      * @return Company
      */
-    public function setDivisionManager(\App\Entity\Employee $divisionManager = null)
+    public function setDivisionManager(Employee $divisionManager = null)
     {
         $this->divisionManager = $divisionManager;
 
@@ -166,7 +166,7 @@ class Company
     /**
      * Get divisionManager
      *
-     * @return \App\Entity\Employee
+     * @return Employee
      */
     public function getDivisionManager()
     {

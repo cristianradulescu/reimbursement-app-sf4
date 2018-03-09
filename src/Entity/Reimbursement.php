@@ -43,7 +43,7 @@ class Reimbursement
     private $value;
 
     /**
-     * @var \Document
+     * @var Document
      *
      * @ORM\ManyToOne(
      *     targetEntity="Document",
@@ -56,7 +56,7 @@ class Reimbursement
     private $document;
 
     /**
-     * @var \Employee
+     * @var Employee
      *
      * @ORM\ManyToOne(
      *     targetEntity="Employee",
@@ -69,7 +69,7 @@ class Reimbursement
     private $employee;
 
     /**
-     * @var \ReimbursementType
+     * @var ReimbursementType
      *
      * @ORM\ManyToOne(
      *     targetEntity="ReimbursementType",
@@ -189,11 +189,11 @@ class Reimbursement
     /**
      * Set document
      *
-     * @param \App\Entity\Document $document
+     * @param Document $document
      *
      * @return Reimbursement
      */
-    public function setDocument(\App\Entity\Document $document = null)
+    public function setDocument(Document $document = null)
     {
         $this->document = $document;
 
@@ -203,7 +203,7 @@ class Reimbursement
     /**
      * Get document
      *
-     * @return \App\Entity\Document
+     * @return Document
      */
     public function getDocument()
     {
@@ -213,11 +213,11 @@ class Reimbursement
     /**
      * Set employee
      *
-     * @param \App\Entity\Employee $employee
+     * @param Employee $employee
      *
      * @return Reimbursement
      */
-    public function setEmployee(\App\Entity\Employee $employee = null)
+    public function setEmployee(Employee $employee = null)
     {
         $this->employee = $employee;
 
@@ -227,7 +227,7 @@ class Reimbursement
     /**
      * Get employee
      *
-     * @return \App\Entity\Employee
+     * @return Employee
      */
     public function getEmployee()
     {
@@ -237,11 +237,11 @@ class Reimbursement
     /**
      * Set type
      *
-     * @param \App\Entity\ReimbursementType $type
+     * @param ReimbursementType $type
      *
      * @return Reimbursement
      */
-    public function setType(\App\Entity\ReimbursementType $type = null)
+    public function setType(ReimbursementType $type = null)
     {
         $this->type = $type;
 
@@ -251,7 +251,7 @@ class Reimbursement
     /**
      * Get type
      *
-     * @return \App\Entity\ReimbursementType
+     * @return ReimbursementType
      */
     public function getType()
     {
@@ -311,7 +311,7 @@ class Reimbursement
      *
      * If the reimbursement is not yet associated with a document, will return an empty status.
      *
-     * @return Status
+     * @return DocumentStatus
      */
     public function getStatus()
     {

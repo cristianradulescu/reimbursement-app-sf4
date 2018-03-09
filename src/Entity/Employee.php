@@ -64,7 +64,7 @@ class Employee
     private $identityCardNumber;
 
     /**
-     * @var \Company
+     * @var Company
      *
      * @ORM\ManyToOne(targetEntity="Company")
      * @ORM\JoinColumns({
@@ -74,7 +74,7 @@ class Employee
     private $company;
 
     /**
-     * @var \Employee
+     * @var Employee
      *
      * @ORM\ManyToOne(targetEntity="Employee")
      * @ORM\JoinColumns({
@@ -84,7 +84,7 @@ class Employee
     private $divisionManager;
 
     /**
-     * @var \EmployeeJobTitle
+     * @var EmployeeJobTitle
      *
      * @ORM\ManyToOne(targetEntity="EmployeeJobTitle")
      * @ORM\JoinColumns({
@@ -273,11 +273,11 @@ class Employee
     /**
      * Set company
      *
-     * @param \App\Entity\Company $company
+     * @param Company $company
      *
      * @return Employee
      */
-    public function setCompany(\App\Entity\Company $company = null)
+    public function setCompany(Company $company = null)
     {
         $this->company = $company;
 
@@ -287,7 +287,7 @@ class Employee
     /**
      * Get company
      *
-     * @return \App\Entity\Company
+     * @return Company
      */
     public function getCompany()
     {
@@ -297,11 +297,11 @@ class Employee
     /**
      * Set divisionManager
      *
-     * @param \App\Entity\Employee $divisionManager
+     * @param Employee $divisionManager
      *
      * @return Employee
      */
-    public function setDivisionManager(\App\Entity\Employee $divisionManager = null)
+    public function setDivisionManager(Employee $divisionManager = null)
     {
         $this->divisionManager = $divisionManager;
 
@@ -311,7 +311,7 @@ class Employee
     /**
      * Get divisionManager
      *
-     * @return \App\Entity\Employee
+     * @return Employee
      */
     public function getDivisionManager()
     {
@@ -321,11 +321,11 @@ class Employee
     /**
      * Set jobTitle
      *
-     * @param \App\Entity\EmployeeJobTitle $jobTitle
+     * @param EmployeeJobTitle $jobTitle
      *
      * @return Employee
      */
-    public function setJobTitle(\App\Entity\EmployeeJobTitle $jobTitle = null)
+    public function setJobTitle(EmployeeJobTitle $jobTitle = null)
     {
         $this->jobTitle = $jobTitle;
 
@@ -335,7 +335,7 @@ class Employee
     /**
      * Get jobTitle
      *
-     * @return \App\Entity\EmployeeJobTitle
+     * @return EmployeeJobTitle
      */
     public function getJobTitle()
     {

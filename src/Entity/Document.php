@@ -24,7 +24,7 @@ class Document
     private $id;
 
     /**
-     * @var \Employee
+     * @var Employee
      *
      * @ORM\ManyToOne(
      *     targetEntity="Employee",
@@ -37,7 +37,7 @@ class Document
     private $employee;
 
     /**
-     * @var \DocumentStatus
+     * @var DocumentStatus
      *
      * @ORM\ManyToOne(
      *     targetEntity="DocumentStatus",
@@ -50,7 +50,7 @@ class Document
     private $status;
 
     /**
-     * @var \DocumentType
+     * @var DocumentType
      *
      * @ORM\ManyToOne(
      *     targetEntity="DocumentType",
@@ -63,7 +63,7 @@ class Document
     private $type;
 
     /**
-     * @var \Travel
+     * @var Travel
      *
      * @ORM\OneToOne(
      *     targetEntity="Travel",
@@ -123,11 +123,11 @@ class Document
     /**
      * Set employee
      *
-     * @param \Employee $employee
+     * @param Employee $employee
      *
      * @return Document
      */
-    public function setEmployee(\Employee $employee = null)
+    public function setEmployee(Employee $employee = null)
     {
         $this->employee = $employee;
 
@@ -137,7 +137,7 @@ class Document
     /**
      * Get employee
      *
-     * @return \Employee
+     * @return Employee
      */
     public function getEmployee()
     {
@@ -147,11 +147,11 @@ class Document
     /**
      * Set status
      *
-     * @param \DocumentStatus $status
+     * @param DocumentStatus $status
      *
      * @return Document
      */
-    public function setStatus(\DocumentStatus $status = null)
+    public function setStatus(DocumentStatus $status = null)
     {
         $this->status = $status;
 
@@ -161,7 +161,7 @@ class Document
     /**
      * Get status
      *
-     * @return \DocumentStatus
+     * @return DocumentStatus
      */
     public function getStatus()
     {
@@ -171,11 +171,11 @@ class Document
     /**
      * Set type
      *
-     * @param \DocumentType $type
+     * @param DocumentType $type
      *
      * @return Document
      */
-    public function setType(\DocumentType $type = null)
+    public function setType(DocumentType $type = null)
     {
         $this->type = $type;
 
@@ -185,7 +185,7 @@ class Document
     /**
      * Get type
      *
-     * @return \DocumentType
+     * @return DocumentType
      */
     public function getType()
     {
@@ -205,7 +205,7 @@ class Document
     /**
      * Get travel
      *
-     * @return \Travel
+     * @return Travel
      */
     public function getTravel()
     {

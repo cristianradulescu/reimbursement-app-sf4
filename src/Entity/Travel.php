@@ -66,7 +66,7 @@ class Travel
     private $destinationLeaveTime;
 
     /**
-     * @var \TravelDestination
+     * @var TravelDestination
      *
      * @ORM\ManyToOne(
      *     targetEntity="TravelDestination",
@@ -79,7 +79,7 @@ class Travel
     private $destination;
 
     /**
-     * @var \Document
+     * @var Document
      *
      * @ORM\OneToOne(
      *     targetEntity="Document",
@@ -92,7 +92,7 @@ class Travel
     private $document;
 
     /**
-     * @var \Employee
+     * @var Employee
      *
      * @ORM\ManyToOne(targetEntity="Employee")
      * @ORM\JoinColumns({
@@ -102,7 +102,7 @@ class Travel
     private $employee;
 
     /**
-     * @var \TravelPurpose
+     * @var TravelPurpose
      *
      * @ORM\ManyToOne(
      *     targetEntity="TravelPurpose",
@@ -294,11 +294,11 @@ class Travel
     /**
      * Set destination
      *
-     * @param \App\Entity\TravelDestination $destination
+     * @param TravelDestination $destination
      *
      * @return Travel
      */
-    public function setDestination(\App\Entity\TravelDestination $destination = null)
+    public function setDestination(TravelDestination $destination = null)
     {
         $this->destination = $destination;
 
@@ -308,7 +308,7 @@ class Travel
     /**
      * Get destination
      *
-     * @return \App\Entity\TravelDestination
+     * @return TravelDestination
      */
     public function getDestination()
     {
@@ -318,11 +318,11 @@ class Travel
     /**
      * Set document
      *
-     * @param \App\Entity\Document $document
+     * @param Document $document
      *
      * @return Travel
      */
-    public function setDocument(\App\Entity\Document $document = null)
+    public function setDocument(Document $document = null)
     {
         $this->document = $document;
 
@@ -332,7 +332,7 @@ class Travel
     /**
      * Get document
      *
-     * @return \App\Entity\Document
+     * @return Document
      */
     public function getDocument()
     {
@@ -342,11 +342,11 @@ class Travel
     /**
      * Set employee
      *
-     * @param \App\Entity\Employee $employee
+     * @param Employee $employee
      *
      * @return Travel
      */
-    public function setEmployee(\App\Entity\Employee $employee = null)
+    public function setEmployee(Employee $employee = null)
     {
         $this->employee = $employee;
 
@@ -356,7 +356,7 @@ class Travel
     /**
      * Get employee
      *
-     * @return \App\Entity\Employee
+     * @return Employee
      */
     public function getEmployee()
     {
@@ -366,11 +366,11 @@ class Travel
     /**
      * Set purpose
      *
-     * @param \App\Entity\TravelPurpose $purpose
+     * @param TravelPurpose $purpose
      *
      * @return Travel
      */
-    public function setPurpose(\App\Entity\TravelPurpose $purpose = null)
+    public function setPurpose(TravelPurpose $purpose = null)
     {
         $this->purpose = $purpose;
 
@@ -380,7 +380,7 @@ class Travel
     /**
      * Get purpose
      *
-     * @return \App\Entity\TravelPurpose
+     * @return TravelPurpose
      */
     public function getPurpose()
     {
@@ -441,7 +441,7 @@ class Travel
      *
      * If the travel is not yet associated with a document, will return an empty status.
      *
-     * @return Status
+     * @return DocumentStatus
      */
     public function getStatus()
     {
