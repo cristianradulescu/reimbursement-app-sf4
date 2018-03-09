@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="/">Reimbursements</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbars">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ path('document_list') }}">
+                    <span data-feather="folder"></span> Documents
+                </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="" id="dropdown-menu-others" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span data-feather="settings"></span> Settings
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdown-menu-others">
+                    <a class="dropdown-item" href="#">Employees</a>
+                    <a class="dropdown-item" href="#">Companies</a>
+                    <a class="dropdown-item" href="#">Travel destinations</a>
+                    <a class="dropdown-item" href="#">Travel purpose</a>
+                    <a class="dropdown-item" href="#">Reimbursement types</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
