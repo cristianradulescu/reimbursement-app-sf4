@@ -16,7 +16,7 @@ class DocumentRepository extends EntityRepository
      */
     public function findAll()
     {
-        return $this->findBy([], ['status' => 'DESC', 'createdAt' => 'DESC']);
+        return $this->findBy([], ['status' => 'ASC', 'createdAt' => 'DESC']);
     }
 
 }
