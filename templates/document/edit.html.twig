@@ -1,0 +1,7 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reimbursements | Edit document #{{ document.id }} {% endblock %}
+
+{% block body %}
+    {{ include('document/_form.html.twig', { form: form, document: document }) }}
+{% endblock %}

@@ -7,7 +7,7 @@
     <a class="btn btn-secondary" href="{{ path('document_list') }}" title='Back to documents'>
         <span data-feather="chevron-left"></span>
     </a>
-    <a class="btn btn-secondary" href="document/edit" title="Edit document">
+    <a class="btn btn-secondary" href="{{ path('document_edit', { id: document.id }) }}" title="Edit document">
         <span data-feather="edit"></span>
     </a>
 

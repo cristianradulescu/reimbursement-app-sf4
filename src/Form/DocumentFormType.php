@@ -23,21 +23,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class DocumentFormType extends AbstractType
 {
     /**
-     * @param FormInterface $form
-     * @param string $child
-     * @param object $value
-     * @param string $class
-     */
-    protected function addReadonlyOrRegularField(FormInterface $form, string $child, object $value, string $class)
-    {
-        if (null === $value) {
-            $form->add($child, EntityType::class, ['class' => $class]);
-        } else {
-            $form->add($child, TextType::class, ['data' => $value, 'disabled' => true]);
-        }
-    }
-
-    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -49,8 +34,14 @@ class DocumentFormType extends AbstractType
             /** @var Document $document */
             $document = $event->getData();
             $form = $event->getForm();
-            $this->addReadonlyOrRegularField($form, 'type', $document->getType(), DocumentType::class);
-            $this->addReadonlyOrRegularField($form, 'status', $document->getStatus(), DocumentStatus::class);
+
+            // document type cannot be changed
+            $form->add('type', TextType::class, ['data' => $document->getType(), 'disabled' => true]);
+            if (null === $document->getId()) {
+                $form->add('status', TextType::class, ['data' => $document->getStatus(), 'disabled' => true]);
+            } else {
+                $form->add('status', EntityType::class, ['class' => DocumentStatus::class]);
+            }
 
             if ($document->isTravel()) {
                 $form->add('travel', TravelFormType::class);

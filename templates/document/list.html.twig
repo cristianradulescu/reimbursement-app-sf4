@@ -41,7 +41,7 @@
                     <a class="btn btn-secondary" href="{{ path('document_show', { id: document.id }) }}">
                         <span data-feather="eye"></span>
                     </a>
-                    <a class="btn btn-secondary" href="/documents/edit/{{ document.id }}">
+                    <a class="btn btn-secondary" href="{{ path('document_edit', { id: document.id }) }}">
                         <span data-feather="edit"></span>
                     </a>
                 </div>

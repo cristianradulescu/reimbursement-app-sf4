@@ -85,4 +85,32 @@ class DocumentController extends Controller
             'form' => $form->createView()
         ]);
     }
+
+    /**
+     * @Route("document/edit/{id}", name="document_edit", requirements={"id"="\d+"})
+     * @ParamConverter("document", class="App\Entity\Document")
+     *
+     * @param Request $request
+     * @param Document $document
+     * @return Response
+     */
+    public function edit(Request $request, Document $document)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $form = $this->createForm(DocumentFormType::class, $document);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $document = $form->getData();
+            $em->persist($document);
+            $em->flush();
+
+            return $this->redirectToRoute('document_list');
+        }
+
+        return $this->render('document/edit.html.twig', [
+            'document' => $document,
+            'form' => $form->createView()
+        ]);
+    }
 }
