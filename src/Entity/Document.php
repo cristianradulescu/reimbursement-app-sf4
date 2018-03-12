@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Document
@@ -46,6 +47,8 @@ class Document
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="status_id", referencedColumnName="id")
      * })
+     *
+     * @Assert\NotBlank()
      */
     private $status;
 
@@ -200,6 +203,43 @@ class Document
     public function getReimbursements()
     {
         return $this->reimbursements;
+    }
+
+    /**
+     * @param Reimbursement $reimbursement
+     * @return $this
+     */
+    public function addReimbursement(Reimbursement $reimbursement)
+    {
+        $reimbursement->setDocument($this);
+        $this->reimbursements->add($reimbursement);
+
+        return $this;
+    }
+
+    /**
+     * @param Reimbursement $reimbursement
+     * @return $this
+     */
+    public function removeReimbursement(Reimbursement $reimbursement)
+    {
+        $this->reimbursements->removeElement($reimbursement);
+
+        return $this;
+    }
+
+    /**
+     * @param Travel $travel
+     * @return $this
+     */
+    public function setTravel(Travel $travel)
+    {
+        // The employee will always be the same for Document and Travel
+        $travel->setEmployee($this->getEmployee());
+        $travel->setDocument($this);
+        $this->travel = $travel;
+
+        return $this;
     }
 
     /**

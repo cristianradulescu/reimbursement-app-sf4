@@ -3,7 +3,7 @@
 {% block title %}Reimbursements | Show document #{{ document.id }} {% endblock %}
 
 {% block body %}
-<div class="btn-group btn-group-sm" role="group" aria-label="Navigation">
+<div>
     <a class="btn btn-secondary" href="{{ path('document_list') }}" title='Back to documents'>
         <span data-feather="chevron-left"></span>
     </a>
@@ -11,7 +11,7 @@
         <span data-feather="edit"></span>
     </a>
 
-    {%  if document.isReimbursement %}
+    {% if document.isReimbursement %}
         <a class="btn btn-secondary" href="#" title="Add new reimbursement on document">
             <span data-feather="plus"></span><span data-feather="dollar-sign"></span>
         </a>

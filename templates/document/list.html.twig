@@ -3,9 +3,12 @@
 {% block title %}Reimbursements | List documents{% endblock %}
 
 {% block body %}
-<div class="btn-group btn-group-sm" role="group" aria-label="Navigation">
-    <a class="btn btn-secondary" href="/documents/create" title="Add new document">
-        <span data-feather="plus-circle"></span>
+<div>
+    <a class="btn btn-secondary" href="{{ path('document_create', { id: constant('App\\Entity\\DocumentType::TYPE_TRAVEL') }) }}" title="Add new travel">
+        <span data-feather="plus"></span><span data-feather="truck"></span>
+    </a>
+    <a class="btn btn-secondary" href="{{ path('document_create', { id: constant('App\\Entity\\DocumentType::TYPE_REIMBURSEMENT') }) }}" title="Add new reimbursement">
+        <span data-feather="plus"></span><span data-feather="dollar-sign"></span>
     </a>
 </div>
 <hr />
