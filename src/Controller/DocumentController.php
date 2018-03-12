@@ -105,7 +105,7 @@ class DocumentController extends Controller
             $em->persist($document);
             $em->flush();
 
-            return $this->redirectToRoute('document_list');
+            return $this->redirectToRoute('document_show', ['id' => $document->getId()]);
         }
 
         return $this->render('document/edit.html.twig', [

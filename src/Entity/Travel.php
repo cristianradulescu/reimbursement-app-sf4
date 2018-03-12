@@ -422,6 +422,7 @@ class Travel
     public function setUpdatedAt($updatedAt)
     {
         $this->updatedAt = $updatedAt;
+        $this->document->setUpdatedAt($updatedAt);
 
         return $this;
     }

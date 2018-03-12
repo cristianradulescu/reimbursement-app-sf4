@@ -5,3 +5,7 @@
 {% block body %}
     {{ include('document/_form.html.twig', { form: form, document: document }) }}
 {% endblock %}
+
+{% block javascripts %}
+    <script src="/js/form.js"></script>
+{% endblock %}

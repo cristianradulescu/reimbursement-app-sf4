@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Travel;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -20,15 +21,29 @@ class TravelFormType extends AbstractType
             ->add('destination')
             ->add('purpose')
             ->add('dateStart', DateType::class, [
-                'widget' => 'single_text'
+                'widget' => 'single_text',
+                'format' => 'Y-MM-dd'
             ])
             ->add('dateEnd', DateType::class, [
-                'widget' => 'single_text'
+                'widget' => 'single_text',
+                'format' => 'Y-MM-dd'
             ])
-            ->add('departureLeaveTime')
-            ->add('destinationArrivalTime')
-            ->add('destinationLeaveTime')
-            ->add('departureArrivalTime')
+            ->add('departureLeaveTime', DateTimeType::class, [
+                'widget' => 'single_text',
+                'format' => 'Y-MM-dd HH:mm'
+            ])
+            ->add('destinationArrivalTime', DateTimeType::class, [
+                'widget' => 'single_text',
+                'format' => 'Y-MM-dd HH:mm'
+            ])
+            ->add('destinationLeaveTime', DateTimeType::class, [
+                'widget' => 'single_text',
+                'format' => 'Y-MM-dd HH:mm'
+            ])
+            ->add('departureArrivalTime', DateTimeType::class, [
+                'widget' => 'single_text',
+                'format' => 'Y-MM-dd HH:mm'
+            ])
         ;
     }
 
