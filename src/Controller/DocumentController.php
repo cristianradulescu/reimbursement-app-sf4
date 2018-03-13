@@ -31,9 +31,15 @@ class DocumentController extends Controller
     public function list()
     {
         $entityManager = $this->getDoctrine()->getManager();
+        $documents = $entityManager->getRepository(Document::class)
+            ->findBy(
+                [],
+                ['status' => 'ASC', 'createdAt' => 'DESC'],
+                30
+            );
 
         return $this->render('document/list.html.twig', [
-            'documents' => $entityManager->getRepository(Document::class)->findAll(),
+            'documents' => $documents
         ]);
     }
 

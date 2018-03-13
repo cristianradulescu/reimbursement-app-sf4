@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Document
  *
  * @ORM\Table(name="document", indexes={@ORM\Index(name="fk_document_employee_id", columns={"employee_id"}), @ORM\Index(name="fk_document_status_id", columns={"status_id"}), @ORM\Index(name="fk_document_type_id", columns={"type_id"})})
- * @ORM\Entity(repositoryClass="App\Repository\DocumentRepository")
+ * @ORM\Entity()
  */
 class Document
 {
