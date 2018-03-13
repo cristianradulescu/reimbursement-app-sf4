@@ -12,7 +12,7 @@
     </a>
 
     {% if document.isReimbursement %}
-        <a class="btn btn-secondary" href="#" title="Add new reimbursement on document">
+        <a class="btn btn-secondary" href="{{ path('document_add_reimbursement', { id: document.id }) }}" title="Add new reimbursement on document">
             <span data-feather="plus"></span><span data-feather="dollar-sign"></span>
         </a>
     {% endif %}

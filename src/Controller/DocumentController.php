@@ -78,7 +78,7 @@ class DocumentController extends Controller
             $em->persist($document);
             $em->flush();
 
-            return $this->redirectToRoute('document_list');
+            return $this->redirectToRoute('document_show');
         }
 
         return $this->render('document/create.html.twig', [
@@ -96,12 +96,12 @@ class DocumentController extends Controller
      */
     public function edit(Request $request, Document $document)
     {
-        $em = $this->getDoctrine()->getManager();
         $form = $this->createForm(DocumentFormType::class, $document);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $document = $form->getData();
+            $em = $this->getDoctrine()->getManager();
             $em->persist($document);
             $em->flush();
 
@@ -112,5 +112,19 @@ class DocumentController extends Controller
             'document' => $document,
             'form' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("document/addReimbursement/{id}", name="document_add_reimbursement", requirements={"id"="\d+"})
+     * @ParamConverter("document", class="App\Entity\Document")
+     *
+     * @param Request $request
+     * @param Document $document
+     * @return Response
+     */
+    public function addReimbursement(Request $request, Document $document)
+    {
+        $document->addReimbursement(new Reimbursement());
+        return $this->edit($request, $document);
     }
 }

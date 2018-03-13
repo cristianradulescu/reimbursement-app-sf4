@@ -37,6 +37,7 @@
         {% if form.reimbursements is defined %}
             <legend class="h5">Reimbursement details</legend>
             {% for reimbursement in form.reimbursements %}
+                <h6>Reimbursement #{{ loop.index }}</h6>
                 {{ include('document/_form_group_row.html.twig', { widget: reimbursement.employee }) }}
                 {{ include('document/_form_group_row.html.twig', { widget: reimbursement.type }) }}
                 {{ include('document/_form_group_row.html.twig', { widget: reimbursement.value }) }}
