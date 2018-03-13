@@ -20,7 +20,6 @@ class DocumentController extends Controller
      */
     public function index()
     {
-
         return $this->redirectToRoute('document_list');
     }
 
@@ -132,5 +131,23 @@ class DocumentController extends Controller
     {
         $document->addReimbursement(new Reimbursement());
         return $this->edit($request, $document);
+    }
+
+    /**
+     * @Route("document/print/{id}", name="document_print", requirements={"id"="\d+"})
+     * @ParamConverter("document", class="App\Entity\Document")
+     *
+     * @param Document $document
+     * @return Response
+     */
+    public function print(Document $document)
+    {
+        $documentPrintService = $this->get('App\Service\DocumentPrintService');
+        $documentPrintService->setDocument($document);
+
+        return $this->render(
+            'document/'.$documentPrintService->getSvgTemplateName(),
+            $documentPrintService->fillPlaceholders()
+        );
     }
 }

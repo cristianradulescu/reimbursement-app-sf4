@@ -35,7 +35,7 @@
             <td>{{ document.totalAmount }}</td>
             <td>
                 <div class="btn-group btn-group-sm" role="group" aria-label="Actions">
-                    <a class="btn btn-secondary" href="/documents/print/{{ document.id }}">
+                    <a class="btn btn-secondary" href="{{ path('document_print', { id: document.id }) }}">
                         <span data-feather="printer"></span>
                     </a>
                     <a class="btn btn-secondary" href="{{ path('document_show', { id: document.id }) }}">
