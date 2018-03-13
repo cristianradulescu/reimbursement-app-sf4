@@ -7,6 +7,7 @@ use App\Entity\DocumentStatus;
 use App\Entity\DocumentType;
 use App\Entity\Reimbursement;
 use App\Form\DocumentFormType;
+use App\Service\DocumentService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -142,12 +143,34 @@ class DocumentController extends Controller
      */
     public function print(Document $document)
     {
-        $documentPrintService = $this->get('App\Service\DocumentPrintService');
-        $documentPrintService->setDocument($document);
+        $documentService = new DocumentService($document);
 
         return $this->render(
-            'document/'.$documentPrintService->getSvgTemplateName(),
-            $documentPrintService->fillPlaceholders()
+            'document/'.$documentService->getSvgTemplateName(),
+            $documentService->fillPlaceholders()
+        );
+    }
+
+    /**
+     * @Route("document/report", name="document_report")
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function report(Request $request)
+    {
+        $documentIds = $request->query->get('documentId');
+        $em = $this->getDoctrine()->getManager();
+        $documents = $em->getRepository(Document::class)->findBy(['id' => $documentIds]);
+
+        $report = [];
+        foreach ($documents as $document) {
+            $report = array_merge($report, (new DocumentService($document))->generateExpensesReport());
+        }
+
+        return $this->render(
+            'document/expenses_report.html.twig',
+            ['report' => $report]
         );
     }
 }

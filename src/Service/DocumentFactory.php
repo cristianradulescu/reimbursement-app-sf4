@@ -7,10 +7,10 @@ use App\Entity\Document;
 use App\Entity\Employee;
 
 /**
- * Class PlaceholderFactory
+ * Class DocumentFactory
  * @package App\Service
  */
-abstract class PlaceholderFactory
+abstract class DocumentFactory
 {
     /**
      * @var Document
@@ -38,4 +38,6 @@ abstract class PlaceholderFactory
      * @return array
      */
     abstract function fetchFilledPlaceholders();
+
+    abstract function generateExpensesReport();
 }

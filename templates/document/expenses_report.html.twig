@@ -1,0 +1,18 @@
+<table class="table table-bordered table-condensed">
+    <thead>
+    <tr>
+        <th>Nume</th>
+        <th>Tip</th>
+        <th>Suma</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for data in report %}
+        <tr >
+            <td>{{ data['employee'] }}</td>
+            <td>{{ data['type'] }}</td>
+            <td>{{ data['amount'] }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

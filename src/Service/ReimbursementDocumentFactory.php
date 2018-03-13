@@ -4,13 +4,13 @@ namespace App\Service;
 
 
 /**
- * Class ReimbursementPlaceholderFactory
+ * Class ReimbursementDocumentFactory
  * @package App\Service
  */
-class ReimbursementPlaceholderFactory extends PlaceholderFactory
+class ReimbursementDocumentFactory extends DocumentFactory
 {
-    /*
-     *
+    /**
+     * @return array
      */
     public function fetchFilledPlaceholders()
     {
@@ -26,4 +26,22 @@ class ReimbursementPlaceholderFactory extends PlaceholderFactory
         ];
     }
 
+    /**
+     * @return array
+     */
+    public function generateExpensesReport()
+    {
+        $reimbursementsReport = array();
+        $reimbursementReport = array();
+        $reimbursementReport['employee'] = (string) $this->employee;
+
+        /** @var Reimbursement $reimbursement */
+        foreach ($this->document->getReimbursements() as $reimbursement) {
+            $reimbursementReport['type'] = (string) $reimbursement->getType();
+            $reimbursementReport['amount'] = (string) $reimbursement->getValue();
+            $reimbursementsReport[] = $reimbursementReport;
+        }
+
+        return $reimbursementsReport;
+    }
 }

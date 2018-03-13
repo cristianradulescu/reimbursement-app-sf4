@@ -10,11 +10,15 @@
     <a class="btn btn-secondary" href="{{ path('document_create', { id: constant('App\\Entity\\DocumentType::TYPE_REIMBURSEMENT') }) }}" title="Add new reimbursement">
         <span data-feather="plus"></span><span data-feather="dollar-sign"></span>
     </a>
+    <a class="btn btn-secondary" href="#" id="generateReportButton" title="Generate report">
+        <span data-feather="clipboard"></span>
+    </a>
 </div>
 <hr />
 <table class="table table-sm table-striped table-hover">
     <thead class="thead-dark">
     <tr>
+        <th></th>
         <th scope="col">#</th>
         <th scope="col">Employee</th>
         <th scope="col">Status</th>
@@ -26,6 +30,9 @@
     <tbody>
     {% for document in documents %}
         <tr>
+            <td>
+                <input type="checkbox" name="documentId[]" id="documentId-{{ document.id }}" value="{{ document.id }}" />
+            </td>
             <th scope="row">
                 <a href="/documents/show/{{ document.id }}">{{ document.id }}</a>
             </th>
@@ -50,4 +57,28 @@
     {% endfor %}
     </tbody>
 </table>
+
+<!-- Report Modal -->
+<div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="reportModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Report</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="reportModalBody">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Report Modal -->
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/js/list.js"></script>
 {% endblock %}

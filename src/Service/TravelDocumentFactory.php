@@ -5,10 +5,10 @@ namespace App\Service;
 use App\Entity\Travel;
 
 /**
- * Class TravelPlaceholderFactory
+ * Class TravelDocumentFactory
  * @package App\Service
  */
-class TravelPlaceholderFactory extends PlaceholderFactory
+class TravelDocumentFactory extends DocumentFactory
 {
     /**
      * @return array
@@ -41,5 +41,21 @@ class TravelPlaceholderFactory extends PlaceholderFactory
             'PLACEHOLDER_DAYS_ON_TRAVEL' => $travel->getNumberOfDaysOnTravel(),
             'PLACEHOLDER_TRAVEL_ALLOWANCE' => $travel::TRAVEL_ALLOWANCE
         ];
+    }
+
+    /**
+     * @return array
+     */
+    public function generateExpensesReport()
+    {
+        $travelReport = array();
+        $travelReport['employee'] = (string) $this->employee;
+
+        /** @var Travel $travel */
+        $travel = $this->document->getTravel();
+        $travelReport['type'] = "Diurna {$travel->getNumberOfDaysOnTravel()} zile";
+        $travelReport['amount'] = Travel::TRAVEL_ALLOWANCE * $travel->getNumberOfDaysOnTravel();
+
+        return array($travelReport);
     }
 }
