@@ -25,6 +25,14 @@ class DocumentController extends Controller
     }
 
     /**
+     * @Route("/logout", name="logout")
+     */
+    public function logout()
+    {
+
+    }
+
+    /**
      * @Route("document/list", name="document_list")
      * @return Response
      */
