@@ -28,11 +28,7 @@ services:
       MYSQL_USER: user
       MYSQL_PASSWORD: pass
       MYSQL_ROOT_PASSWORD: passroot
+    ports:
+      - 3306:3306
     volumes:
       - mysqldata:/var/lib/mysql
-
-  adminer:
-    container_name: rbsf4_adminer
-    image: adminer
-    ports:
-      - 8081:8080
