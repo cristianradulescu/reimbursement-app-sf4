@@ -39,7 +39,7 @@
             <td>{{ document.employee.fullName }}</td>
             <td>{{ include('document/_document_status_icon.html.twig', { status_id: document.status.id, value: document.status.name }) }}</td>
             <td>{{ include('document/_document_type_icon.html.twig', { type_id: document.type.id }) }}</td>
-            <td>{{ document.totalAmount }}</td>
+            <td>{{ document.totalAmount|number_format }}</td>
             <td>
                 <div class="btn-group btn-group-sm" role="group" aria-label="Actions">
                     <a class="btn btn-secondary" href="{{ path('document_print', { id: document.id }) }}">

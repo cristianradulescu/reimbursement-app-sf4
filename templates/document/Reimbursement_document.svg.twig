@@ -1452,7 +1452,7 @@
             id="text408"
             style="font-size:12px"
             x="{{ coords['value']['x'] }}"
-            y="{{ coords['value']['y'] + row_increment }}">{{ reimbursement.getValue() }}
+            y="{{ coords['value']['y'] + row_increment }}">{{ reimbursement.getValue()|number_format }}
         </text>
     {% endfor %}
     </g>
@@ -1462,7 +1462,7 @@
         x="850"
         y="582"
         style="font-size:14px"
-        id="text398">{{ PLACEHOLDER_REIMBURSEMENT_TOTAL_AMOUNT }}
+        id="text398">{{ PLACEHOLDER_REIMBURSEMENT_TOTAL_AMOUNT|number_format }}
     </text>
     <!-- /Placeholders -->
 
