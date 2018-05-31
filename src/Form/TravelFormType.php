@@ -15,18 +15,18 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class TravelFormType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('destination')
             ->add('purpose')
             ->add('dateStart', DateType::class, [
                 'widget' => 'single_text',
-                'format' => 'Y-MM-dd'
+                'format' => DateType::HTML5_FORMAT
             ])
             ->add('dateEnd', DateType::class, [
                 'widget' => 'single_text',
-                'format' => 'Y-MM-dd'
+                'format' => DateType::HTML5_FORMAT
             ])
             ->add('departureLeaveTime', DateTimeType::class, [
                 'widget' => 'single_text',
@@ -47,7 +47,7 @@ class TravelFormType extends AbstractType
         ;
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Travel::class
