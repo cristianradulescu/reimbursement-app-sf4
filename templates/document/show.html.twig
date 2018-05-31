@@ -35,7 +35,7 @@
         )
         }}
         {{ include('document/_showpage_container_row.html.twig', { key: 'Type', value: document.type.name }) }}
-        {{ include('document/_showpage_container_row.html.twig', { key: 'Total', value: document.totalAmount|number_format(2, ',', '.') }) }}
+        {{ include('document/_showpage_container_row.html.twig', { key: 'Total', value: document.totalAmount|numberTotalFormat }) }}
         {{ include('document/_showpage_container_row.html.twig', { key: 'Created', value: document.createdAt|timestampFormat }) }}
         {{ include('document/_showpage_container_row.html.twig', { key: 'Updated', value: document.updatedAt|timestampFormat }) }}
     </tbody>

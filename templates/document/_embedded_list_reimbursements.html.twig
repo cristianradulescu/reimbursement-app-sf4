@@ -15,7 +15,7 @@
                         <tr>
                             <td>{{ reimbursement.employee.fullName }}</td>
                             <td>{{ reimbursement.type.name }}</td>
-                            <td>{{ reimbursement.value|number_format(2, ',', '.') }}</td>
+                            <td>{{ reimbursement.value|numberTotalFormat }}</td>
                             <td>{{ reimbursement.number }} / {{ reimbursement.date|dateFormat }}</td>
                         </tr>
                     {% endfor %}
